@@ -27,6 +27,16 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
   resolution up to 2160p, bitrate up to 30 Mbps, sharpening, fps cap, auto-split
 - Share straight into WhatsApp, or save to the gallery
 
+## Release build
+
+```bash
+JAVA_HOME=/opt/homebrew/opt/openjdk@17 ./gradlew assembleRelease
+```
+
+Signed APK: `app/build/outputs/apk/release/app-release.apk`. Signing uses `keystore.properties`
+and `keystore/` (both git-ignored). Keep a backup of them: every future update must be signed
+with the same key or phones will refuse to install it over the old version.
+
 ## Code map
 
 - `VideoConverter.kt` – Media3 Transformer: trim, resize, bitrate, sharpen, fps cap, HDR→SDR, split into parts
